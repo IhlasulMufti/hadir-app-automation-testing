@@ -1,1 +1,0 @@
-# hadir-app-testing
