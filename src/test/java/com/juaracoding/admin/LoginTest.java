@@ -49,4 +49,13 @@ public class LoginTest {
         extentTest.log(LogStatus.PASS, "I should be redirected to dashboard page");
     }
 
+    @Given("I am logged in with email {string} and password {string}")
+    public void i_am_logged_in_with_email_and_password(String email, String password) {
+        driver.get(Constants.ADMIN_URL);
+        Assert.assertEquals(driver.getCurrentUrl(), Constants.ADMIN_URL);
+        loginPage.loginUser(email, password);
+        loginPage.setBtnLogin();
+        extentTest.log(LogStatus.PASS, "I am logged in with email "+email+" and password "+password);
+    }
+
 }
