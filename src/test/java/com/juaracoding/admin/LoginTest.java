@@ -3,12 +3,14 @@ package com.juaracoding.admin;
 import com.juaracoding.Hooks;
 import com.juaracoding.pages.admin.LoginPage;
 import com.juaracoding.utils.Constants;
+import com.juaracoding.utils.Utils;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -56,6 +58,56 @@ public class LoginTest {
         loginPage.loginUser(email, password);
         loginPage.setBtnLogin();
         extentTest.log(LogStatus.PASS, "I am logged in with email "+email+" and password "+password);
+    }
+
+    @When("I click user profile")
+    public void i_click_user_profile() {
+        loginPage.userProfile();
+        extentTest.log(LogStatus.PASS, "I click user profile");
+    }
+
+    @And("I click log out button")
+    public void i_click_log_out_button() {
+        loginPage.setBtnLogout();
+        extentTest.log(LogStatus.PASS, "I click log out button");
+    }
+
+    @Then("I should be redirected to login page")
+    public void i_should_be_redirected_to_login_page() {
+        Assert.assertEquals(loginPage.getTxtLogin(), "Login");
+        Assert.assertEquals(driver.getCurrentUrl(), Constants.ADMIN_URL);
+        extentTest.log(LogStatus.PASS, "I should be redirected to login page");
+    }
+
+    @Then("Error with message {string} will appear")
+    public void error_with_message_will_appear(String expectedErrorMessage){
+        Utils.delay(3);
+        Assert.assertTrue(loginPage.getErrorMessage().contains(expectedErrorMessage));
+        extentTest.log(LogStatus.PASS, "Error with message "+expectedErrorMessage+" will appear");
+    }
+    // Still error
+    @Then("Alert with message {string} will appear")
+    public void alert_with_message_will_appear(String expectedErrorMessage){
+        System.out.println(loginPage.getEmailAttribute());
+        extentTest.log(LogStatus.PASS, "Alert with message "+expectedErrorMessage+" will appear");
+    }
+
+    @Then("Password value is hidden")
+    public void password_value_is_hidden() {
+        Assert.assertEquals(loginPage.getPasswordType(), "password");
+        extentTest.log(LogStatus.PASS, "Password value is hidden");
+    }
+
+    @And("I click hidden password button")
+    public void i_click_hidden_password_button() {
+        loginPage.setBtnHiddenPassword();
+        extentTest.log(LogStatus.PASS, "I click hidden password button");
+    }
+
+    @Then("Password value revealed")
+    public void password_value_revealed() {
+        Assert.assertEquals(loginPage.getPasswordType(), "text");
+        extentTest.log(LogStatus.PASS, "Password value revealed");
     }
 
 }

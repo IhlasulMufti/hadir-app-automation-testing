@@ -34,6 +34,15 @@ public class LoginPage {
     @FindBy(xpath = "//button[contains(@class, 'css-uajqx8')]")
     private WebElement btnLogout;
 
+    @FindBy(xpath = "//p[contains(@class, 'css-a97271')]")
+    private WebElement txtLogin;
+
+    @FindBy(xpath = "//p[contains(@class, 'css-1qamc72')]")
+    private WebElement txtErrorMessage;
+
+    @FindBy(xpath = "//button[contains(@class, 'css-1yhx7lq')]")
+    private WebElement btnHiddenPassword;
+
     public void loginUser(String email, String password) {
         // remove username / password from last login in the field
         // need to remove first because in invalid login case, the field will not empty
@@ -62,5 +71,25 @@ public class LoginPage {
 
     public void setBtnLogout() {
         btnLogout.click();
+    }
+
+    public String getTxtLogin() {
+        return txtLogin.getText();
+    }
+
+    public String getErrorMessage() {
+        return txtErrorMessage.getText();
+    }
+
+    public String getEmailAttribute() {
+        return email.getAttribute("value");
+    }
+
+    public String getPasswordType() {
+        return password.getAttribute("type");
+    }
+
+    public void setBtnHiddenPassword() {
+        btnHiddenPassword.click();
     }
 }
