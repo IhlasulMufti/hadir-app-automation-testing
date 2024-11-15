@@ -13,7 +13,9 @@ public enum ScenarioTests {
     T9("Login with invalid format email"),
     T10("Login with invalid format email"),
     T11("Password masking verification when entering password"),
-    T12("Disable password masking");
+    T12("Disable password masking"),
+    //dashboard
+    T13("Successfully go to the dashboard page");
 
     private String scenarioTestName;
 
