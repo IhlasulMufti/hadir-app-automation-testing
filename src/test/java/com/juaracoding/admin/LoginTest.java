@@ -10,7 +10,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -85,11 +84,13 @@ public class LoginTest {
         Assert.assertTrue(loginPage.getErrorMessage().contains(expectedErrorMessage));
         extentTest.log(LogStatus.PASS, "Error with message "+expectedErrorMessage+" will appear");
     }
-    // Still error
-    @Then("Alert with message {string} will appear")
-    public void alert_with_message_will_appear(String expectedErrorMessage){
-        System.out.println(loginPage.getEmailAttribute());
-        extentTest.log(LogStatus.PASS, "Alert with message "+expectedErrorMessage+" will appear");
+
+    @Then("Failed to login and still in the login page {string}")
+    public void alert_with_message_will_appear(String url){
+        Assert.assertEquals(loginPage.getEmailAttribute(), "email");
+        Utils.delay(2);
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+        extentTest.log(LogStatus.PASS, "Failed to login and still in the login page "+url);
     }
 
     @Then("Password value is hidden")
