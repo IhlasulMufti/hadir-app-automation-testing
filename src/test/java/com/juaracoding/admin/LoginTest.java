@@ -85,10 +85,11 @@ public class LoginTest {
         Assert.assertTrue(loginPage.getErrorMessage().contains(expectedErrorMessage));
         extentTest.log(LogStatus.PASS, "Error with message "+expectedErrorMessage+" will appear");
     }
-    // Still error
+
     @Then("Alert with message {string} will appear")
     public void alert_with_message_will_appear(String expectedErrorMessage){
-        System.out.println(loginPage.getEmailAttribute());
+        Assert.assertEquals(loginPage.getEmailAttribute(), "email");
+        Assert.assertEquals(driver.getCurrentUrl(), Constants.ADMIN_URL);
         extentTest.log(LogStatus.PASS, "Alert with message "+expectedErrorMessage+" will appear");
     }
 

@@ -82,7 +82,7 @@ public class LoginPage {
     }
 
     public String getEmailAttribute() {
-        return email.getAttribute("value");
+        return email.getAttribute("type");
     }
 
     public String getPasswordType() {
