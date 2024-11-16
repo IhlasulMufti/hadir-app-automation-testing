@@ -12,8 +12,22 @@ public enum ScenarioTests {
     T8("Login with email and password invalid"),
     T9("Login with invalid format email"),
     T10("Login with invalid format email"),
-    T11("Password masking verification when entering password"),
-    T12("Disable password masking");
+    T11("Login with invalid format email"),
+    T12("Password masking verification when entering password"),
+    T13("Disable password masking"),
+    T14("Login with email and password valid"),
+    T15("Account log out verification"),
+    T16("Login with email and password invalid"),
+    T17("Login with email and password invalid"),
+    T18("Login with email and password invalid"),
+    T19("Login with email and password invalid"),
+    T20("Login with email and password invalid"),
+    T21("Login with email and password invalid"),
+    T22("Login with invalid format email"),
+    T23("Login with invalid format email"),
+    T24("Login with invalid format email"),
+    T25("Password masking verification when entering password"),
+    T26("Disable password masking");
 
     private String scenarioTestName;
 
