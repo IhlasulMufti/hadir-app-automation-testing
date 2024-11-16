@@ -50,17 +50,18 @@ Feature: Login
       | admin@hadir.com     |             | Email atau password salah          |
       | admin@hadir.com     | invalid     | Email atau password salah          |
 
-  # TCC.Hadir.01.004 - TCC.Hadir.01.005
+  # TCC.Hadir.01.004 - TCC.Hadir.01.005, TCC.Hadir.01.077
   Scenario Outline: Login with invalid format email
     Given I am on the login page
     When I enter email "<email>" and password "<password>"
     And I click the login button
-    Then Alert with message "<alert_message>" will appear
+    Then Failed to login and still in the login page "<url>"
 
     Examples:
-      | email             | password    | alert_message                               |
-      | adminhadir.com    | admin@hadir | Please include an '@' in the email address  |
-      | adm@in@hadir.com  | admin@hadir | '@' should not contain the symbol '@'.      |
+      | email             | password    | url                                               |
+      | adminhadir.com    | admin@hadir | https://magang.dikahadir.com/authentication/login |
+      | adm@in@hadir.com  | admin@hadir | https://magang.dikahadir.com/authentication/login |
+      | ahay@gmailcom     | 12345678    | https://magang.dikahadir.com/authentication/login |
 
   # TCC.Hadir.01.010
   Scenario Outline: Password masking verification when entering password

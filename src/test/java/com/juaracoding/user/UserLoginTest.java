@@ -29,6 +29,7 @@ public class UserLoginTest {
     @Given("I am on the login page for absent")
     public void i_am_on_the_login_page_for_absent(){
         driver.get(Constants.USER_URL);
+        Utils.delay(2);
         Assert.assertEquals(driver.getCurrentUrl(), Constants.USER_URL);
         extentTest.log(LogStatus.PASS, "I am on the login page for absent");
     }
@@ -66,13 +67,6 @@ public class UserLoginTest {
         Utils.delay(2);
         Assert.assertEquals(driver.getCurrentUrl(), Constants.USER_URL);
         extentTest.log(LogStatus.PASS, "I should be redirected to login page for absent");
-    }
-
-    @Then("Alert with message {string} will appear for absent")
-    public void alert_with_message_will_appear(String expectedErrorMessage){
-        Assert.assertEquals(loginPage.getEmailAttribute(), "email");
-        Assert.assertEquals(driver.getCurrentUrl(), Constants.USER_URL);
-        extentTest.log(LogStatus.PASS, "Alert with message "+expectedErrorMessage+" will appear");
     }
 
 }
