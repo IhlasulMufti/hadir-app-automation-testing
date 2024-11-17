@@ -64,6 +64,7 @@ public class SakitTest {
         Utils.delay(1);
         sakitNegative01Page.setBtnSaveDate();
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"klik button save date");
     }
     @And("Klik button filter")
     public void klik_button_filter(){
@@ -96,69 +97,82 @@ public class SakitTest {
     public void klik_button_reset(){
         sakitNegative01Page.setBtnReset();
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"Klik button reset");
     }
     @And("Klik button clear filter")
     public void klik_button_clear_filter(){
         sakitNegative01Page.setBtnClearFilter();
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"Klik button clear filter");
     }
     @And("Klik button batal")
     public void klik_button_batal(){
         sakitNegative01Page.setBtnBatalFilter();
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"Klik button batal");
     }
 
     @Then("Verifikasi tidak terdapat data record")
     public void verifikasi_tidak_terdapat_data_record(){
         Assert.assertTrue(sakitNegative01Page.setDataRecordEmpty());
+        extentTest.log(LogStatus.PASS,"Verifikasi tidak terdapat data record");
     }
 
     @When("Klik button date")
     public void Klik_button_date(){
         sakitNegative01Page.setBtnDate();
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"Klik button date");
     }
 
     @And("Pilih end date yang sesuai")
     public void pilih_end_date_yang_sesuai(){
-        sakitNegative01Page.setInputEndDate("Jan 22, 2024");
+        sakitNegative01Page.setInputEndDate("Apr 05, 2024");
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"Pilih end date yang sesuai");
     }
     @And("Pilih start date yang sesuai")
     public void pilih_start_date_yang_sesuai(){
-        sakitNegative01Page.setInputStartDate("Jan 22, 2024");
+        sakitNegative01Page.setInputStartDate("Apr 05, 2024");
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"Pilih start date yang sesuai");
     }
 
     @And("Pilih unit yang sesuai")
     public void pilih_unit_yang_sesuai(){
         sakitNegative01Page.setInputFiltervalid("AMEX");
         Utils.delay(2);
+        extentTest.log(LogStatus.PASS,"Pilih unit yang sesuai");
     }
     @Given("Masukkan nama yang sesuai")
     public void masukkan_nama_yang_sesuai(){
         sakitNegative01Page.setInputSearchValid("Alif Irfan Zuhdi");
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"Masukkan nama yang sesuai");
     }
     @Given("Masukkan nama yang sesuai2")
     public void masukkan_nama_yang_sesuai2(){
         sakitNegative01Page.setInputSearchValid2("Elva");
         Utils.delay(1);
+        extentTest.log(LogStatus.PASS,"Masukkan nama yang sesuai2");
     }
     @Then("Verifikasi terdapat data record")
     public void verifikasi_terdapat_data_record(){
         Assert.assertFalse(sakitNegative01Page.setDataRecordEmpty());
+        Assert.assertEquals(sakitNegative01Page.recordDateDetail(),"05 Apr 2024 - 05 Apr 2024");
+        Assert.assertEquals(sakitNegative01Page.recordNameDetail(),"Elva");
+        extentTest.log(LogStatus.PASS,"Verifikasi terdapat data record");
     }
     @When("Klik button download")
     public void klik_button_download(){
         Utils.delay(1);
         sakitNegative01Page.setBtnDownload();
+        extentTest.log(LogStatus.PASS,"Klik button download");
     }
     @Then("Kembali ke tab awal")
     public void kembali_ke_tab_awal(){
         sakitNegative01Page.backTab();
+        extentTest.log(LogStatus.PASS,"Kembali ke tab awal");
     }
-
-
 
 }

@@ -62,8 +62,8 @@ Feature: Menu Sakit Negative and Positif
       And Pilih start date yang sesuai
       And Pilih end date yang sesuai
       And klik button save date
-      Then Verifikasi terdapat data record
       And Klik button search
+      Then Verifikasi terdapat data record
       And Klik button reset
 
     Scenario: Menampilkan data sakit input nama lalu pilih filter dengan tidak input tanggal Start Date dan tanggal End date yang sesuai

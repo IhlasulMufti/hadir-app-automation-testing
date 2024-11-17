@@ -70,11 +70,28 @@ public class SakitPage {
     @FindBy(xpath = "//*[@id=\"__next\"]/div/div[2]/div/div[1]/div/div[2]/div/div[1]/div/table/tbody/tr[1]")
     private List <WebElement> dataRecord;
 
+    @FindBy(xpath = "//td//h6[contains(@class, 'css-d5zmtp')]")
+    private WebElement recordName;
+
+    @FindBy(xpath = "//td//h6[contains(@class, 'css-1gtt4lb')]")
+    private List <WebElement> recordDate;
+
 
     public boolean setDataRecordEmpty(){
         System.out.println(dataRecord.size());
         return dataRecord.isEmpty();
+
     }
+
+    public String recordNameDetail(){
+        return recordName.getText();
+    }
+
+    public String recordDateDetail(){
+        return recordDate.get(0).getText();
+    }
+
+
 
     public void setMenuLaporan(){
         menuLaporan.click();
