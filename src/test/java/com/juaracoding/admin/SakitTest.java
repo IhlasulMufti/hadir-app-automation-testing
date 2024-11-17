@@ -1,7 +1,7 @@
 package com.juaracoding.admin;
 
 import com.juaracoding.Hooks;
-import com.juaracoding.pages.sakit.SakitPage;
+import com.juaracoding.pages.admin.SakitPage;
 import com.juaracoding.utils.Utils;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;

@@ -1,7 +1,7 @@
 package com.juaracoding.admin;
 
 import com.juaracoding.Hooks;
-import com.juaracoding.pages.Lembur.LemburPage;
+import com.juaracoding.pages.admin.LemburPage;
 import com.juaracoding.utils.Utils;
 import com.relevantcodes.extentreports.ExtentTest;
 import io.cucumber.java.en.And;
