@@ -5,6 +5,7 @@ public class Constants {
     public static final String ADMIN_URL = "https://magang.dikahadir.com/authentication/login";
 
     public static final String USER_URL = "https://magang.dikahadir.com/absen/login";
+//    public static final String USER_URL = "https://whatmylocation.com/";
 
     public static final long TIMEOUT = 15;
 
