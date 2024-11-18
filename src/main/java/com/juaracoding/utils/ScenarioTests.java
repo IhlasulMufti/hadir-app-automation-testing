@@ -29,8 +29,7 @@ public enum ScenarioTests {
     T25("Password masking verification when entering password"),
     T26("Disable password masking"),
     T27("Visit the attendance history view via the attendance button"),
-    T28("Return to the home view"),
-    T29("Visit the attendance history view via the full link");
+    T28("Return to the home view");
 
     private String scenarioTestName;
 
