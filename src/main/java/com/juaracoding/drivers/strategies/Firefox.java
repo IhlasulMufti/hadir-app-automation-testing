@@ -7,7 +7,7 @@ public class Firefox implements DriverStrategy{
 
     @Override
     public WebDriver setStrategy() {
-        System.setProperty("webdriver.gecko.driver", "C:\\MyTools\\geckodriver.exe");
+        System.setProperty("webdriver.firefox.driver", "/Users/macosx/Documents/chromedriver-mac-x64/chromedriver");
         return new FirefoxDriver();
     }
 
