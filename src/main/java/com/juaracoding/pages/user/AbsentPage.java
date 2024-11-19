@@ -2,6 +2,7 @@ package com.juaracoding.pages.user;
 
 import com.juaracoding.drivers.DriverSingleton;
 import com.juaracoding.utils.Utils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -120,6 +121,10 @@ public class AbsentPage {
     }
 
     public boolean setSuccessAbsentPhoto() {
-        return successAbsentPhoto.isDisplayed();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        Boolean is_image_loaded = (Boolean) js.executeScript(
+                "return arguments[0].complete && arguments[0].naturalWidth > 0", successAbsentPhoto);
+
+        return is_image_loaded;
     }
 }

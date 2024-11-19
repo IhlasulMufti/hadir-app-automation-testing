@@ -7,14 +7,15 @@ Feature: Absent
     And I verify the clock is correct with the current time
     And I input the absence type
     And I input a message "<note>" in the appropriate note
-#    And I click clocking in button for submit absent
-#    Then Verify the absent information are correct and appear on the history page
-#    And History page display a selfie photo
+    And I click clocking in button for submit absent
+    And I scroll to find history section
+    Then Verify the absent information are correct and appear on the history page include note "<note>"
+    And History page display a selfie photo
 
     Examples:
       | email               | password | note                          |
-      | testuser1@gmail.com | 12345678 | absen masuk selfie pakai note |
-      | testuser3@gmail.com | 12345678 |                               |
+      | testuser4@gmail.com | 12345678 | absen masuk selfie pakai note |
+      | testuser5@gmail.com | 12345678 |                               |
 
   # TCC.Hadir.01.072, TCC.Hadir.01.080
   Scenario Outline: Successful clocking in (non-selfie)
@@ -23,13 +24,14 @@ Feature: Absent
     And I verify the clock is correct with the current time
     And I input the absence type
     And I input a message "<note>" in the appropriate note
-#    And I click clocking in button for submit absent
-#    Then Verify the absent information are correct and appear on the history page
+    And I click clocking in button for submit absent
+    And I scroll to find history section
+    Then Verify the absent information are correct and appear on the history page include note "<note>"
 
     Examples:
       | email                   | password | note                              |
-      | noselfieuser@gmail.com  | 12345678 | absen masuk non-selfie pakai note |
-      | noselfieuser2@gmail.com | 12345678 |                                   |
+      | noselfieuser3@gmail.com | 12345678 | absen masuk non-selfie pakai note |
+      | noselfieuser4@gmail.com | 12345678 |                                   |
 
   # TCC.Hadir.01.073
   Scenario Outline: Unable to clock in when already clocked in on the same day
@@ -38,8 +40,8 @@ Feature: Absent
     Then Verify that the clocking in button is not found
 
     Examples:
-      | email         | password |
-      | ahay@gmailcom | 12345678 |
+      | email                   | password |
+      | noselfieuser3@gmail.com | 12345678 |
 
   # TCC.Hadir.01.074, TCC.Hadir.01.081
   Scenario Outline: Successful clocking out
@@ -48,10 +50,10 @@ Feature: Absent
     And I click Keluar button
     And I verify the clock is correct with the current time
     And I input a message "<note>" in the clocking out note
-#    And I click clocking out button for submit absent
-#    Then Verify the absent information are correct and appear on the history page
+    And I click clocking out button for submit absent
+    Then Verify the absent information are correct and appear on the history page include note "<note>"
 
     Examples:
-      | email         | password | note                    |
-      | ahay@gmailcom | 12345678 | absen keluar pakai note |
-      | ahay@gmailcom | 12345678 |                         |
+      | email                   | password | note                              |
+      | noselfieuser3@gmail.com | 12345678 | absen masuk non-selfie pakai note |
+      | noselfieuser4@gmail.com | 12345678 |                                   |

@@ -20,14 +20,14 @@ public class AbsentTest {
     private static WebDriver driver;
     private ExtentTest extentTest;
     private static AbsentPage absentPage = new AbsentPage();
-    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+    private String message;
+    private String currentTime;
 
     public AbsentTest(){
         driver = Hooks.driver;
         extentTest = Hooks.extentTest;
     }
-
-    String message;
 
     @When("I click clocking in button")
     public void i_click_clocking_in_button() {
@@ -46,8 +46,7 @@ public class AbsentTest {
     @And("I verify the clock is correct with the current time")
     public void i_verify_the_clock_is_correct_with_the_current_time() {
         Utils.delay(2);
-        String currentTime = new SimpleDateFormat("HH:mm").format(new Date());
-        System.out.println(currentTime);
+        currentTime = new SimpleDateFormat("HH:mm").format(new Date());
         Assert.assertEquals(absentPage.absentTime(), currentTime);
         extentTest.log(LogStatus.PASS, "I verify the clock is correct with the current time");
     }
@@ -67,20 +66,25 @@ public class AbsentTest {
     @And("I click clocking in button for submit absent")
     public void i_click_clocking_in_button_for_submit_absent() {
         absentPage.submitClockingIn();
+        Utils.delay(2);
         extentTest.log(LogStatus.PASS, "I click clocking in button for submit absent");
     }
 
-    @Then("Verify the absent information are correct and appear on the history page")
-    public void verify_the_absent_information_are_correct_and_appear_on_the_history_page() {
-        System.out.println(absentPage.setSuccessAbsentDate());
-        System.out.println(absentPage.setSuccessAbsentTime());
-        System.out.println(absentPage.setSuccessAbsentNote());
-        extentTest.log(LogStatus.PASS, "Verify the absent information are correct and appear on the history page");
+    @Then("Verify the absent information are correct and appear on the history page include note {string}")
+    public void verify_the_absent_information_are_correct_and_appear_on_the_history_page_include_note(String note) {
+        Utils.delay(3);
+        String currentDate = new SimpleDateFormat("dd MMMM yyyy").format(new Date());
+
+        Assert.assertTrue(absentPage.setSuccessAbsentDate().contains(currentDate));
+        Assert.assertTrue(absentPage.setSuccessAbsentTime().contains(currentTime));
+        Assert.assertTrue(absentPage.setSuccessAbsentNote().contains(note));
+        extentTest.log(LogStatus.PASS, "Verify the absent information are correct and appear on the history page include note "+note);
     }
 
     @And("History page display a selfie photo")
     public void history_page_display_a_selfie_photo() {
-        System.out.println(absentPage.setSuccessAbsentPhoto());
+        Utils.delay(2);
+        Assert.assertTrue(absentPage.setSuccessAbsentPhoto());
         extentTest.log(LogStatus.PASS, "History page display a selfie photo");
     }
 
@@ -92,9 +96,11 @@ public class AbsentTest {
 
     @When("I scroll to find history section")
     public void i_scroll_to_find_history_section() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         Utils.delay(5);
         js.executeScript("window.scrollBy(0,600)");
-        System.out.println(absentPage.setTxtAbsentHistory());
+
+        Assert.assertEquals(absentPage.setTxtAbsentHistory(), "History Absensi");
         extentTest.log(LogStatus.PASS, "I scroll to find history section");
     }
 
@@ -113,6 +119,7 @@ public class AbsentTest {
     @And("I click clocking out button for submit absent")
     public void i_click_clocking_out_button_for_submit_absent() {
         absentPage.submitClockingOut();
+        Utils.delay(2);
         extentTest.log(LogStatus.PASS, "I click clocking out button for submit absent");
     }
 
