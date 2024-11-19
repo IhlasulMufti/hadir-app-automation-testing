@@ -56,6 +56,7 @@ Feature: Menu Sakit Negative and Positif
 
     # ----------- START POSITIVE TEST -----------
 
+
     Scenario: Menampilkan data Sakit dengan tidak memilih filter departement
       Given Masukkan nama yang sesuai2
       When Klik button date
@@ -100,17 +101,40 @@ Feature: Menu Sakit Negative and Positif
       And Klik button clear filter
       And Klik button batal
 
+  Scenario Outline: Menampilkan data unit dengan pilih departement
+    Given Klik button filter
+    When Masukkan departement valid "<departement>"
+    And Klik button Terapkan
+    And Klik button search
+    Then Kolom unit tidak ditemukan
+    And Klik button reset
+    And Klik button filter
+    And Klik button clear filter
+    And Klik button batal
+    Examples:
+      | departement   |
+      | AMEX MERCHANT |
 
-#    Scenario: Menampilkan Bukti sakit pada kolom foto
-#      Given Masukkan nama yang sesuai2
-#      When Klik button search
-#      And Klik button view
-#      Then Klik button reset
+
+  Scenario: Menampilkan Bukti sakit pada kolom foto
+    Given Masukkan nama yang sesuai2
+    When Klik button search
+    And Klik button view
+    Then Verifikasi display foto
+    And Klik button reset
 
   Scenario: Mendownload bukti sakit
     Given Masukkan nama yang sesuai2
     When Klik button search
     And Klik button download
     Then Kembali ke tab awal
+    And Klik button reset
+
+
+
+  Scenario: Menampilkan data sakit dengan next page
+    Given Klik button next page
+    Then Verifikasi data next page
+
 
     # --------------- END POSITIVE TEST -------------
