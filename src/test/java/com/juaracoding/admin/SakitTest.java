@@ -227,12 +227,14 @@ public class SakitTest {
         js.executeScript("window.scrollBy(0,500)");
         Utils.delay(2);
         sakitNegative01Page.setBtnNextPage();
+        extentTest.log(LogStatus.PASS,"Klik button next page");
     }
     @Then("Verifikasi data next page")
     public void verifikasi_data_next_page(){
         js.executeScript("window.scrollBy(0,250)");
         Utils.delay(2);
         Assert.assertEquals(sakitNegative01Page.getTxtNextPage(),"11-20 of 44");
+        extentTest.log(LogStatus.PASS,"Verifikasi data next page");
     }
 
 
