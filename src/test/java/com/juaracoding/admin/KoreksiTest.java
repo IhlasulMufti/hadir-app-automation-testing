@@ -2,7 +2,6 @@ package com.juaracoding.admin;
 
 import com.juaracoding.Hooks;
 import com.juaracoding.pages.admin.KoreksiPage;
-import com.juaracoding.pages.admin.LoginPage;
 import com.juaracoding.utils.Utils;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -20,7 +19,6 @@ public class KoreksiTest {
 
     private static WebDriver driver;
     private ExtentTest extentTest;
-    private static LoginPage loginPage = new LoginPage();
     private static KoreksiPage koreksiPage = new KoreksiPage();
 
     private String expectedStartDate;
@@ -45,7 +43,7 @@ public class KoreksiTest {
     public void click_koreksi_button() {
         Utils.delay(2);
         koreksiPage.setKoreksiBtn();
-        extentTest.log(LogStatus.PASS, "click koreksi button");
+        extentTest.log(LogStatus.PASS, "Click koreksi button");
     }
 
     @When("Select start date {string} and end date {string}")
@@ -87,7 +85,7 @@ public class KoreksiTest {
     public void input_name(String name) {
         expectedName = name;
         koreksiPage.setNameValid(name);
-        extentTest.log(LogStatus.PASS, "Input name");
+        extentTest.log(LogStatus.PASS, "Input name UserQA");
     }
 
     @Then ("Verify the name displayed same as input name")
@@ -104,7 +102,7 @@ public class KoreksiTest {
     public void verify_no_data_is_displayed() {
         int rowCount = koreksiPage.getTableRowCount();
         Assert.assertEquals(rowCount, 0, "Tabel menampilkan data padahal seharusnya tidak ada data.");
-        extentTest.log(LogStatus.PASS, "Verify no data displayed");
+        extentTest.log(LogStatus.PASS, "Verify no data is displayed");
     }
 
     @When ("Click filter icon")
@@ -140,6 +138,7 @@ public class KoreksiTest {
     @Then("Verify terapkan button is not clickable")
     public void verify_terapkan_button_is_not_clickable() {
         Assert.assertTrue(koreksiPage.isButtonDisabled(), "Verify terapkan button is not clickable");
+        extentTest.log(LogStatus.PASS, "Verify terapkan button is not clickable");
     }
 
     @And("Click approved button")
@@ -169,7 +168,7 @@ public class KoreksiTest {
         koreksiPage.clickInputAlasan();
         koreksiPage.setInputAlasan("Data yang dikoreksi salah");
         koreksiPage.setTolakBtn();
-        extentTest.log(LogStatus.PASS, "Input alasan");
+        extentTest.log(LogStatus.PASS, "Input alasan reject");
     }
 
     @Then("Verify rejected is success")
@@ -182,7 +181,7 @@ public class KoreksiTest {
     @And("Change view to 5 rows")
     public void change_view_to_5_rows() {
         koreksiPage.setChangeRows();
-        extentTest.log(LogStatus.PASS, "Change view to 5 row");
+        extentTest.log(LogStatus.PASS, "Change view to 5 rows");
     }
 
     @Then("Verify table display 5 rows")
@@ -196,7 +195,7 @@ public class KoreksiTest {
     @And("Change view to 25 rows")
     public void change_view_to_25_rows() {
         koreksiPage.setChangeRows25();
-        extentTest.log(LogStatus.PASS, "Change view to 5 row");
+        extentTest.log(LogStatus.PASS, "Change view to 25 rows");
     }
 
     @Then("Verify table display 25 rows")

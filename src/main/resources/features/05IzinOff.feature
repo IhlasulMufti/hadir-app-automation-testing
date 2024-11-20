@@ -1,10 +1,10 @@
-Feature: Koreksi
+Feature: Izin Off
 
-   # TCC.Hadir.01.036 #PositiveCase
-  Scenario Outline: Verifikasi data koreksi dengan input tanggal yang sesuai
+   # TCC.Hadir.01.048 #PositiveCase
+  Scenario Outline: Verifikasi data izin off dengan input tanggal yang sesuai
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     When Select start date "Nov 07, 2024" and end date "Nov 09, 2024"
     And Click save button
     And Click search button
@@ -14,11 +14,11 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-   # TCC.Hadir.01.037 #PositiveCase
-  Scenario Outline: Verifikasi data koreksi dengan input nama dan input tanggal yang sesuai
+   # TCC.Hadir.01.049 #PositiveCase
+  Scenario Outline: Verifikasi data izin off dengan input nama dan input tanggal yang sesuai
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     When Input name "UserQA"
     When Select start date "Nov 07, 2024" and end date "Nov 09, 2024"
     And Click save button
@@ -30,11 +30,11 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-   # TCC.Hadir.01.038 #NegativeCase
-  Scenario Outline: Menampilkan data koreksi dengan tidak mengisi tanggal yang sesuai
+   # TCC.Hadir.01.050 #NegativeCase
+  Scenario Outline: Menampilkan data izin off dengan tidak mengisi tanggal yang sesuai
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     When Select start date "Nov 20, 2024" and end date "Nov 21, 2024"
     And Click save button
     And Click search button
@@ -44,11 +44,11 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-    # TCC.Hadir.01.039 #NegativeCase
-  Scenario Outline: Menampilkan data koreksi dengan input nama yang tidak sesuai, tetapi tanggal valid
+    # TCC.Hadir.01.051 #NegativeCase
+  Scenario Outline: Menampilkan data izin off dengan input nama yang tidak sesuai, tetapi tanggal valid
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     When Input name "testerjuara"
     When Select start date "Nov 07, 2024" and end date "Nov 09, 2024"
     And Click save button
@@ -59,11 +59,11 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-   # TCC.Hadir.01.040 #NegativeCase
-  Scenario Outline: Menampilkan data koreksi dengan input nama yang sesuai, tetapi tanggal tidak valid
+   # TCC.Hadir.01.052 #NegativeCase
+  Scenario Outline: Menampilkan data izin off dengan input nama yang sesuai, tetapi tanggal tidak valid
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     When Input name "UserQA"
     When Select start date "Nov 20, 2024" and end date "Nov 21, 2024"
     And Click save button
@@ -74,11 +74,11 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-    # TCC.Hadir.01.041 #PositiveCase
-  Scenario Outline: Menampilkan data koreksi dengan input nama departemen menggunakan filter By Unit
+    # TCC.Hadir.01.053 #PositiveCase
+  Scenario Outline: Menampilkan data izin off dengan input nama departemen menggunakan filter By Unit
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     When Click filter icon
     When Click search department
     And Input Unit name
@@ -89,11 +89,11 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-    # TCC.Hadir.01.042 #NegativeCase
-  Scenario Outline: Menampilkan data koreksi dengan tidak memilih departemen menggunakan filter By Unit
+    # TCC.Hadir.01.054 #NegativeCase
+  Scenario Outline: Menampilkan data izin off dengan tidak memilih departemen menggunakan filter By Unit
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     When Click filter icon
     Then Verify terapkan button is not clickable
 
@@ -101,36 +101,39 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-    # TCC.Hadir.01.043 #PositiveCase
-  Scenario Outline: Approval koreksi absen yang diajukan
+    # TCC.Hadir.01.055 #NegativeCase
+  Scenario Outline: Approval izin off yang diajukan dengan atasan berbeda
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
-    And Click approved button
-    Then Verify approval is success
+    When Click izin off button
+    And Click aksi button
+    And Click approval izin off
+    And Click setujui button on the alert message
+    Then Verify approval izin off is failed because different boss
 
     Examples:
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-    # TCC.Hadir.01.044 #PositiveCase
-  Scenario Outline: Reject koreksi absen yang diajukan
+    # TCC.Hadir.01.056 #NegativeCase
+  Scenario Outline: Reject izin off yang diajukan dengan atasan berbeda
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
-    And Click reject button
-    And Input alasan reject
-    Then Verify rejected is success
+    When Click izin off button
+    And Click aksi button
+    And Click reject izin off
+    And Input dengan alasan reject and click tolak
+    Then Verify rejected izin off is failed because different boss
 
     Examples:
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-    # TCC.Hadir.01.045 #PositiveCase
+    # TCC.Hadir.01.057 #PositiveCase
   Scenario Outline: Ubah tampilkan row per page menjadi 5
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     And Change view to 5 rows
     Then Verify table display 5 rows
 
@@ -138,11 +141,11 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-    # TCC.Hadir.01.046 #PositiveCase
+    # TCC.Hadir.01.058 #PositiveCase
   Scenario Outline: Ubah tampilkan row per page menjadi 25
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
+    When Click izin off button
     And Change view to 25 rows
     Then Verify table display 25 rows
 
@@ -150,14 +153,15 @@ Feature: Koreksi
       | email           | password    |
       | admin@hadir.com | admin@hadir |
 
-    # TCC.Hadir.01.047 #NegativeCase
-  Scenario Outline: Reject koreksi absen yang diajukan tanpa mengisi alasan
+    # TCC.Hadir.01.059 #NegativeCase
+  Scenario Outline: Reject izin off yang diajukan tanpa mengisi alasan
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
-    When Click koreksi button
-    And Click reject button
-    And Click tolak button
-    Then Verify rejected is failed
+    When Click izin off button
+    And Click aksi button
+    And Click reject izin off
+    And Click tolak without alasan
+    Then Verify rejected izin off is failed
 
     Examples:
       | email           | password    |
