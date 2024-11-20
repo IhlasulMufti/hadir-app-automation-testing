@@ -9,7 +9,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import jdk.jshell.execution.Util;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -43,7 +42,7 @@ public class SakitTest {
         Utils.delay(1);
         sakitNegative01Page.setSubMenuSakit();
         Utils.delay(1);
-        extentTest.log(LogStatus.PASS,"klik button menu sakit\"");
+        extentTest.log(LogStatus.PASS,"klik button menu sakit");
     }
 
     @And("Masukkan nama yang tidak ada")

@@ -99,6 +99,11 @@ public class SakitPage {
     @FindBy(xpath = "//p[contains(@class, 'MuiTablePagination-displayedRows css-kim0d')] ")
     private WebElement txtNextPage;
 
+
+
+
+
+
     public boolean fileExport(){
         String path = DOWNLOAD_DIR + "\\" + "foto bukti sakit.jpg";
         File file = new File(path);
@@ -166,10 +171,12 @@ public class SakitPage {
     }
     public void setInputStartDate(String startdate){
         inputStartDate.clear();
+        Utils.delay(2);
         inputStartDate.sendKeys(startdate);
     }
     public void setInputEndDate(String enddate){
         inputEndDate.clear();
+        Utils.delay(2);
         inputEndDate.sendKeys(enddate);
     }
     public void setBtnSaveDate(){
