@@ -8,7 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LemburPage {
     private WebDriver driver;
@@ -60,6 +62,108 @@ public class LemburPage {
     @FindBy(xpath = "/html/body/div[3]/div[3]/div/form/div[2]/button[1]")
     private WebElement btnBatalFilter;
 
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div[2]/div/div[1]/div/div[2]/div/div[3]/div/div/p[2]")
+    private WebElement txtDataRecordEmpty;
+
+    @FindBy(xpath = "//tr[@class= 'MuiTableRow-root MuiTableRow-hover css-lry5m7']")
+    private WebElement listDataRecord;
+
+    @FindBy(xpath = "//button[normalize-space()='Export']")
+    private WebElement btnExport;
+
+    @FindBy(xpath = "//div[@class='MuiSnackbarContent-message css-1w0ym84']")
+    private WebElement txtAlertExport;
+
+    @FindBy(xpath = "//p[@class= 'MuiTablePagination-displayedRows css-kim0d']")
+    private WebElement txtJmlDataRow;
+
+    @FindBy(xpath = "//h6[text()=\"IT Programmer\"]")
+    private List<WebElement> txtUnit;
+
+    @FindBy(xpath = "//tr[@class= 'MuiTableRow-root MuiTableRow-head css-9arnca']")
+    private WebElement txtTabelUnit;
+
+    @FindBy(xpath = "//tbody/tr[1]/td[14]/div[1]/div[2]/a[1]")
+    private WebElement btnView;
+
+    @FindBy(xpath = "//tbody/tr[1]/td[15]/button[1]//*[name()='svg']")
+    private WebElement btnAksi;
+
+    @FindBy(xpath = "//button[contains(@class, 'MuiButton-containedSizeMedium css-3uvhvk')]")
+    private WebElement btnCancelRequest;
+
+    @FindBy(xpath = "//h6[@class= 'MuiTypography-root MuiTypography-h6 css-nub3j7']")
+    private WebElement txtStatusWait;
+
+    @FindBy(xpath = "//button[contains(@class, 'MuiButton-containedSizeMedium css-4075ia')]")
+    private WebElement btnUbahData;
+
+    @FindBy(xpath = "//div[@id='mui-3']")
+    private WebElement btnRowsPerPage;
+
+    @FindBy(xpath = "//li[contains(@class, 'MuiTablePagination-menuItem css-74h9kj')]")
+    private WebElement btnRowsPerPage5;
+
+    @FindBy(xpath = "//*[@id=\"mui-2\"]/li[2]")
+    private WebElement btnRowsPerPage10;
+
+    @FindBy(xpath = "//*[@id=\"mui-2\"]/li[3]")
+    private WebElement btnRowsPerPage25;
+
+    @FindBy(xpath = "//p[@class= 'MuiTablePagination-displayedRows css-kim0d']")
+    private WebElement txtRows25;
+
+
+    public String getTxtRows(){
+        return txtRows25.getText();
+    }
+
+    public void setBtnRowsPerPage(){
+        btnRowsPerPage.click();
+    }
+    public void setBtnRowsPerPage25(){
+        btnRowsPerPage25.click();
+    }
+    public void setBtnRowsPerPage10(){
+        btnRowsPerPage10.click();
+    }
+    public void setBtnRowsPerPage5(){
+        btnRowsPerPage5.click();
+    }
+    public void setBtnAksi(){
+        btnAksi.click();
+    }
+    public void setBtnCancelRequest(){
+        btnCancelRequest.click();
+    }
+    public void setBtnView(){
+        btnView.click();
+    }
+    public String getTxtTabelUnit(){
+        return txtTabelUnit.getText();
+    }
+    public String getTxtUnitTotal(){
+        return Integer.toString(txtUnit.size());
+    }
+
+    public String getTxtJmlDataRow(){
+        return txtJmlDataRow.getText();
+    }
+
+    public void setBtnExport(){
+        btnExport.click();
+    }
+
+    public String getTxtAlertExport(){
+        return txtAlertExport.getText();
+    }
+
+
+    public String getTxtDataEmpty(){
+        return txtDataRecordEmpty.getText();
+    }
+
+
     public void setMenuLaporan(){
         menuLaporan.click();
     }
@@ -71,9 +175,6 @@ public class LemburPage {
         inputSearch.sendKeys(name);
     }
 
-    public void setBtnDate(){
-        btnDate.click();
-    }
     public void setInputStartDate(String startdate){
         inputStartDate.clear();
         inputStartDate.sendKeys(startdate);
@@ -82,36 +183,12 @@ public class LemburPage {
         inputEndDate.clear();
         inputEndDate.sendKeys(enddate);
     }
-    public void setBtnSaveDate(){
-        btnSaveDate.click();
-    }
-    public void setBtnFilter(){
-        btnFilter.click();
-    }
     public void setInputFilterInvalid(String filter){
 
         inputFilter.sendKeys(filter);
         Utils.delay(2);
         inputFilter.sendKeys(Keys.ARROW_DOWN);
         inputFilter.sendKeys(Keys.ENTER);
-    }
-    public void setBtnTerapkan(){
-        btnTerapkan.sendKeys(Keys.ENTER);
-    }
-    public void setBtnSearch(){
-        btnSearch.click();
-    }
-
-    public void setBtnReset(){
-        btnReset.click();
-    }
-
-    public void setBtnClearFilter(){
-        btnClearFilter.click();
-    }
-
-    public void setBtnBatalFilter(){
-        btnBatalFilter.click();
     }
 
     public void setInputFiltervalid(String filter){
@@ -124,17 +201,6 @@ public class LemburPage {
 
     public void setInputSearchValid(String name){
         inputSearch.sendKeys(name);
-    }
-
-    public void setInputSearchValid2(String name){
-        inputSearch.sendKeys(name);
-    }
-
-    public void backTab(){
-        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tab.get(1));
-        Utils.delay(2);
-        driver.switchTo().window(tab.get(0));
     }
 
 }
