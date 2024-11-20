@@ -129,7 +129,7 @@ Feature: Menu Sakit Negative and Positif
     And Klik button download
     Then Kembali ke tab awal
     And Klik button reset
-
+    And Verifikasi download foto bukti sakit
 
 
   Scenario: Menampilkan data sakit dengan next page

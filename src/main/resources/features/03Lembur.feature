@@ -182,7 +182,7 @@ Feature: Menu Lembur Negative and Positif Test
       | departement   |
       | IT Programmer |
 
-  Scenario Outline: Exsport Data Sakit dengan mengisi start date dan end date
+  Scenario Outline: Exsport Data lembur dengan mengisi start date dan end date
     Given Klik button date
     When Masukkan start date valid "<startdate>"
     And Masukkan end date valid "<enddate>"
