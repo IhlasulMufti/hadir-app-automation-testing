@@ -9,11 +9,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LemburPage {
     private WebDriver driver;
+    private static final String DOWNLOAD_DIR = "C:\\Users\\giffari\\Downloads";
+
 
     public LemburPage(){
         this.driver = DriverSingleton.getDriver();
@@ -113,6 +116,12 @@ public class LemburPage {
     @FindBy(xpath = "//p[@class= 'MuiTablePagination-displayedRows css-kim0d']")
     private WebElement txtRows25;
 
+
+    public boolean fileExport(){
+        String path = DOWNLOAD_DIR + "\\" + "Data Lembur 29 Nov 2024 s_d 30 Nov 2024.xlsx";
+        File file = new File(path);
+        return file.exists();
+    }
 
     public String getTxtRows(){
         return txtRows25.getText();

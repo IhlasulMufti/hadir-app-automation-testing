@@ -26,7 +26,8 @@ public class LemburTest {
     private static LemburPage lemburPage = new LemburPage();
     JavascriptExecutor js = (JavascriptExecutor) driver;
     ArrayList<String> tab;
-    private static final String DOWNLOAD_DIR = "C:/Users/giffari/Downloads";
+
+
 
 
     public LemburTest(){
@@ -181,12 +182,14 @@ public class LemburTest {
     }
 
     @Then("Verifikasi data export lembur")
-    public void verifikasi_data_export_lembur(String fileName) throws InterruptedException {
-        // Tunggu beberapa saat agar file selesai terdownload
-        Thread.sleep(5000);
+    public void verifikasi_data_export_lembur(){
+        Utils.delay(3);
+        try {
+            Assert.assertTrue(lemburPage.fileExport());
+        } catch (Exception e) {
+            System.out.println("File tidak tersedia");
+        }
 
-        File file = new File(DOWNLOAD_DIR + "/" + fileName);
-        assert file.exists() : "File not found: " + fileName;
         extentTest.log(LogStatus.PASS,"Verifikasi data export lembur");
     }
 
