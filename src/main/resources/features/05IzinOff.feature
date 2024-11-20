@@ -19,8 +19,8 @@ Feature: Izin Off
     Given I am logged in with email "<email>" and password "<password>"
     When Click laporan button
     When Click izin off button
-    When Input name "UserQA"
-    When Select start date "Nov 07, 2024" and end date "Nov 09, 2024"
+    When Input name "Ahay"
+    When Select start date "Nov 06, 2024" and end date "Nov 08, 2024"
     And Click save button
     And Click search button
     Then Verify the date displayed same as selected date

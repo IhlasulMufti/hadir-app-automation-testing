@@ -158,7 +158,7 @@ public class KoreksiTest {
 
     @And("Click reject button")
     public void click_reject_button() {
-        totalRejectBefore = koreksiPage.setVerifyApproval();
+        totalRejectBefore = koreksiPage.setVerifyReject();
         koreksiPage.setRejectBtn();
         extentTest.log(LogStatus.PASS, "Click reject button");
     }
