@@ -2,17 +2,22 @@ package com.juaracoding.pages.admin;
 
 import com.juaracoding.drivers.DriverSingleton;
 import com.juaracoding.utils.Utils;
+import jdk.jshell.execution.Util;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SakitPage {
     private WebDriver driver;
+    private static final String DOWNLOAD_DIR = "C:\\Users\\giffari\\Downloads";
+
 
     public SakitPage(){
         this.driver = DriverSingleton.getDriver();
@@ -67,8 +72,8 @@ public class SakitPage {
     @FindBy(xpath = "//*[@id=\"__next\"]/div/div[2]/div/div[1]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td[5]/h6/div/div/a[2]")
     private WebElement btnDownload;
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/div/div[2]/div/div[1]/div/div[2]/div/div[1]/div/table/tbody/tr[1]")
-    private List <WebElement> dataRecord;
+    @FindBy(xpath = "//p[@class= 'MuiTablePagination-displayedRows css-kim0d']")
+    private WebElement txtDataRecordEmpty;
 
     @FindBy(xpath = "//td//h6[contains(@class, 'css-d5zmtp')]")
     private WebElement recordName;
@@ -76,11 +81,65 @@ public class SakitPage {
     @FindBy(xpath = "//td//h6[contains(@class, 'css-1gtt4lb')]")
     private List <WebElement> recordDate;
 
+    @FindBy(xpath = "/html/body/div[3]")
+    private WebElement buktiSakit;
 
-    public boolean setDataRecordEmpty(){
-        System.out.println(dataRecord.size());
-        return dataRecord.isEmpty();
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div[2]/div/div[1]/div/div[2]/div/div[1]/div/table/tbody/tr[1]")
+    private List<WebElement> recordData;
 
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div[2]/div/div[1]/div/div[2]/div/div[1]/div/table/thead/tr")
+    private WebElement txtUnit;
+
+    @FindBy(xpath = "//img[@alt= 'Photo sakit']")
+    private WebElement viewDisplay;
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div[2]/div/div[1]/div/div[2]/div/div[2]/div/div/div[3]/button[3]")
+    private WebElement btnNextPage;
+
+    @FindBy(xpath = "//p[contains(@class, 'MuiTablePagination-displayedRows css-kim0d')] ")
+    private WebElement txtNextPage;
+
+    public boolean fileExport(){
+        String path = DOWNLOAD_DIR + "\\" + "foto bukti sakit.jpg";
+        File file = new File(path);
+        return file.exists();
+    }
+
+
+
+    public String getTxtNextPage(){
+
+        return txtNextPage.getText();
+    }
+    public void setBtnNextPage(){
+        Utils.delay(2);
+        btnNextPage.click();
+        Utils.delay(2);
+    }
+
+    public boolean getViewDisplay(){
+        System.out.println(viewDisplay.isDisplayed());
+        return viewDisplay.isDisplayed();
+    }
+
+
+    public String getTxtUnit(){
+        return txtUnit.getText();
+    }
+
+
+    public boolean setRecordData(){
+        System.out.println(recordData.size());
+        System.out.println();
+        for (WebElement dataRecord : recordData){
+            System.out.println(dataRecord.getText());
+        }
+        return recordData.isEmpty();
+    }
+
+    public String getTxtDataRecordEmpty(){
+
+        return txtDataRecordEmpty.getText();
     }
 
     public String recordNameDetail(){
@@ -90,7 +149,6 @@ public class SakitPage {
     public String recordDateDetail(){
         return recordDate.get(0).getText();
     }
-
 
 
     public void setMenuLaporan(){
@@ -166,19 +224,14 @@ public class SakitPage {
     public void setBtnView(){
         btnView.click();
         Utils.delay(3);
-        btnView.sendKeys(Keys.ESCAPE);
+
     }
+
 
     public void setBtnDownload(){
         btnDownload.click();
-
-    }
-
-    public void backTab(){
-        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tab.get(1));
         Utils.delay(2);
-        driver.switchTo().window(tab.get(0));
     }
+
 
 }
