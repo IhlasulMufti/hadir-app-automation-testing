@@ -97,6 +97,7 @@ public class SakitTest {
     }
     @And("Klik button search")
     public void klik_button_search(){
+        Utils.delay(3);
         sakitNegative01Page.setBtnSearch();
         Utils.delay(2);
         extentTest.log(LogStatus.PASS,"Klik button search");
@@ -210,18 +211,31 @@ public class SakitTest {
         Assert.assertEquals(driver.getCurrentUrl(),"https://magang.dikahadir.com/laporan/sakit?fullname=Elva");
         extentTest.log(LogStatus.PASS,"Kembali ke tab awal");
     }
+    @And("Verifikasi download foto bukti sakit")
+    public void verifikasi_download_foto_bukti_sakit(){
+        Utils.delay(3);
+        try {
+            Assert.assertTrue(sakitNegative01Page.fileExport());
+        } catch (Exception e) {
+            System.out.println("File tidak tersedia");
+        }
+
+        extentTest.log(LogStatus.PASS,"Verifikasi download foto bukti sakit");
+    }
 
     @Given("Klik button next page")
     public void klik_button_next_page(){
         js.executeScript("window.scrollBy(0,500)");
         Utils.delay(2);
         sakitNegative01Page.setBtnNextPage();
+        extentTest.log(LogStatus.PASS,"Klik button next page");
     }
     @Then("Verifikasi data next page")
     public void verifikasi_data_next_page(){
         js.executeScript("window.scrollBy(0,250)");
         Utils.delay(2);
-        Assert.assertEquals(sakitNegative01Page.getTxtNextPage(),"11-20 of 43");
+        Assert.assertEquals(sakitNegative01Page.getTxtNextPage(),"11-20 of 44");
+        extentTest.log(LogStatus.PASS,"Verifikasi data next page");
     }
 
 

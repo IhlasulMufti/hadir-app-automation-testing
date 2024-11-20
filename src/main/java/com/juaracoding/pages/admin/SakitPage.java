@@ -10,11 +10,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SakitPage {
     private WebDriver driver;
+    private static final String DOWNLOAD_DIR = "C:\\Users\\giffari\\Downloads";
+
+
     public SakitPage(){
         this.driver = DriverSingleton.getDriver();
         PageFactory.initElements(driver,this);
@@ -95,7 +99,11 @@ public class SakitPage {
     @FindBy(xpath = "//p[contains(@class, 'MuiTablePagination-displayedRows css-kim0d')] ")
     private WebElement txtNextPage;
 
-
+    public boolean fileExport(){
+        String path = DOWNLOAD_DIR + "\\" + "foto bukti sakit.jpg";
+        File file = new File(path);
+        return file.exists();
+    }
 
 
 
