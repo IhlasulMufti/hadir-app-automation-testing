@@ -2,7 +2,7 @@ package com.juaracoding.utils;
 
 public enum ScenarioTests {
 
-/*    T1("Login with email and password valid"),
+    T1("Login with email and password valid"),
     T2("Account log out verification"),
     T3("Login with email and password invalid"),
     T4("Login with email and password invalid"),
@@ -27,7 +27,7 @@ public enum ScenarioTests {
     T23("Login with invalid format email"),
     T24("Login with invalid format email"),
     T25("Password masking verification when entering password"),
-    T26("Disable password masking"),*/
+    T26("Disable password masking"),
     T27("Successful clocking in (selfie)"),
     T28("Successful clocking in (selfie)"),
     T29("Successful clocking in (non-selfie)"),

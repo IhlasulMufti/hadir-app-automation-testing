@@ -33,7 +33,7 @@ Feature: User Login
     Examples:
       | email               | password    | error_message                      |
       | invalid@hadir.com   | admin@hadir | Akun tidak ditemukan               |
-      | testuser2@gmail.com | 12345678    | Pendaftaran akun belum di aktivasi |
+      | notactive@gmail.com | 12345678    | Pendaftaran akun belum di aktivasi |
       |                     |             | Akun tidak ditemukan               |
       |                     | 12345678    | Akun tidak ditemukan               |
       | testuser1@gmail.com |             | Email atau password salah          |

@@ -72,7 +72,7 @@ public class AbsentTest {
 
     @Then("Verify the absent information are correct and appear on the history page include note {string}")
     public void verify_the_absent_information_are_correct_and_appear_on_the_history_page_include_note(String note) {
-        Utils.delay(3);
+        Utils.delay(5);
         String currentDate = new SimpleDateFormat("dd MMMM yyyy").format(new Date());
 
         Assert.assertTrue(absentPage.setSuccessAbsentDate().contains(currentDate));
@@ -98,7 +98,7 @@ public class AbsentTest {
     public void i_scroll_to_find_history_section() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         Utils.delay(5);
-        js.executeScript("window.scrollBy(0,600)");
+        js.executeScript("window.scrollBy(0,650)");
 
         Assert.assertEquals(absentPage.setTxtAbsentHistory(), "History Absensi");
         extentTest.log(LogStatus.PASS, "I scroll to find history section");
