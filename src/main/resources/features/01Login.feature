@@ -17,6 +17,6 @@ Feature: Login
     And I click the login button
     Then I should be redirected to dashboard page
 
-    Examples:
-      | email           | password    |
-      | admin@hadir.com | admin@hadir |
+      Examples:
+        | email           | password    |
+        | admin@hadir.com | admin@hadir |
