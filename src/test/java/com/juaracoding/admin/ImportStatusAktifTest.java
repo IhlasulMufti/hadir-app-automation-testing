@@ -78,7 +78,7 @@ public class ImportStatusAktifTest {
 
     @And("The file failed to import")
     public void The_file_failed_to_import(){
-        Assert.assertEquals(importStatusAktifPage.getTxtValidasi(),"Berhasil import excel");
+        Assert.assertEquals(importStatusAktifPage.getTxtValidasi(),"Gagal import file karena template tidak sesuai");
         extentTest.log(LogStatus.FAIL, "The file failed to import");
     }
 
@@ -109,7 +109,7 @@ public class ImportStatusAktifTest {
 
     @And("The empty data file failed to import")
     public void The_empty_data_file_failed_to_import(){
-        Assert.assertEquals(importStatusAktifPage.getTxtValidasi(),"Berhasil import excel");
+        Assert.assertEquals(importStatusAktifPage.getTxtValidasi(),"Gagal import file karena Field kosong");
         extentTest.log(LogStatus.FAIL, "The empty data file failed to import");
     }
 
