@@ -46,6 +46,7 @@ public class ManagementUserTest {
         managementUserPage.setUserManagementList();
         Utils.delay(3);
         Assert.assertEquals(managementUserPage.getTxtUser(), "User");
+        extentTest.log(LogStatus.PASS, "I went to the management user page");
     }
 
     @Then("I view list of user data by name")
@@ -53,10 +54,12 @@ public class ManagementUserTest {
         Assert.assertEquals(managementUserPage.getTxtUser(), "User");
         Assert.assertEquals(managementUserPage.getTxtNamaKaryawan(), "testerjuara");
         Assert.assertEquals(driver.getCurrentUrl(), "https://magang.dikahadir.com/management/user?fullname%5B%24like%5D=%25testerjuara%25");
+        extentTest.log(LogStatus.PASS, "I view list of user data by name");
     }
 
     @Then("I view list of user data by punctuation input")
     public void i_view_list_of_user_data_by_punctuation_input(){
         Assert.assertEquals(managementUserPage.getTxtUser(), "User");
+        extentTest.log(LogStatus.PASS, "I view list of user data by punctuation input");
     }
 }
