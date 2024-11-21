@@ -72,7 +72,7 @@ public class AbsentTest {
 
     @Then("Verify the absent information are correct and appear on the history page include note {string}")
     public void verify_the_absent_information_are_correct_and_appear_on_the_history_page_include_note(String note) {
-        Utils.delay(5);
+        Utils.delay(7);
         String currentDate = new SimpleDateFormat("dd MMMM yyyy").format(new Date());
 
         Assert.assertTrue(absentPage.setSuccessAbsentDate().contains(currentDate));

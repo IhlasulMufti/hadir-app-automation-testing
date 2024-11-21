@@ -25,6 +25,10 @@ public class Chrome implements DriverStrategy {
         options.setExperimentalOption("useAutomationExtension", false);
         options.setExperimentalOption("prefs", prefs);
         options.addArguments("--no-sandbox");
+        options.addArguments("--use-fake-device-for-media-stream");
+        options.addArguments("--headless");  // Setting headless mode
+        options.addArguments("--disable-gpu");  // GPU hardware acceleration isn't useful in headless mode
+        options.addArguments("--window-size=1366,768");  // Set the window size
 
         return new ChromeDriver(options);
     }
