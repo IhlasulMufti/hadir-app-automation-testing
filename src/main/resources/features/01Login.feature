@@ -42,13 +42,13 @@ Feature: Login
     Then Error with message "<error_message>" will appear
 
     Examples:
-      | email               | password    | error_message                      |
-      | invalid@hadir.com   | admin@hadir | Akun tidak ditemukan               |
-      | notactive@gmail.com | 12345678    | Pendaftaran akun belum di aktivasi |
-      |                     |             | Akun tidak ditemukan               |
-      |                     | admin@hadir | Akun tidak ditemukan               |
-      | admin@hadir.com     |             | Email atau password salah          |
-      | admin@hadir.com     | invalid     | Email atau password salah          |
+      | email                | password    | error_message                      |
+      | invalid@hadir.com    | admin@hadir | Akun tidak ditemukan               |
+      | notactive2@gmail.com | 12345678    | Pendaftaran akun belum di aktivasi |
+      |                      |             | Akun tidak ditemukan               |
+      |                      | admin@hadir | Akun tidak ditemukan               |
+      | admin@hadir.com      |             | Email atau password salah          |
+      | admin@hadir.com      | invalid     | Email atau password salah          |
 
   # TCC.Hadir.01.004 - TCC.Hadir.01.005, TCC.Hadir.01.077
   Scenario Outline: Login with invalid format email
