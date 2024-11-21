@@ -88,7 +88,7 @@ public class LoginTest {
     @Then("Failed to login and still in the login page {string}")
     public void alert_with_message_will_appear(String url){
         Assert.assertEquals(loginPage.getEmailAttribute(), "email");
-        Utils.delay(5);
+        Utils.delay(8);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         extentTest.log(LogStatus.PASS, "Failed to login and still in the login page "+url);
     }

@@ -14,8 +14,8 @@ Feature: Absent
 
     Examples:
       | email               | password | note                          |
-      | testuser1@gmail.com | 12345678 | absen masuk selfie pakai note |
-      | testuser3@gmail.com | 12345678 |                               |
+      | testuser4@gmail.com | 12345678 | absen masuk selfie pakai note |
+      | testuser5@gmail.com | 12345678 |                               |
 
   # TCC.Hadir.01.072, TCC.Hadir.01.080
   Scenario Outline: Successful clocking in (non-selfie)
@@ -30,8 +30,8 @@ Feature: Absent
 
     Examples:
       | email                   | password | note                              |
-      | noselfieuser3@gmail.com | 12345678 | absen masuk non-selfie pakai note |
-      | noselfieuser4@gmail.com | 12345678 |                                   |
+      | noselfieuser5@gmail.com | 12345678 | absen masuk non-selfie pakai note |
+      | noselfieuser6@gmail.com | 12345678 |                                   |
 
   # TCC.Hadir.01.073
   Scenario Outline: Unable to clock in when already clocked in on the same day
@@ -41,7 +41,7 @@ Feature: Absent
 
     Examples:
       | email                   | password |
-      | noselfieuser3@gmail.com | 12345678 |
+      | noselfieuser5@gmail.com | 12345678 |
 
   # TCC.Hadir.01.074, TCC.Hadir.01.081
   Scenario Outline: Successful clocking out
@@ -55,5 +55,5 @@ Feature: Absent
 
     Examples:
       | email                   | password | note                              |
-      | noselfieuser3@gmail.com | 12345678 | absen masuk non-selfie pakai note |
-      | noselfieuser4@gmail.com | 12345678 |                                   |
+      | noselfieuser5@gmail.com | 12345678 | absen masuk non-selfie pakai note |
+      | noselfieuser6@gmail.com | 12345678 |                                   |
