@@ -17,10 +17,10 @@ public class ImportStatusAktifPage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "//p[normalize-space()='Import']")
+    @FindBy(xpath = "//p[text()='Import']")
     private WebElement dropdownMenuImport;
 
-    @FindBy(xpath = "//p[normalize-space()='Import Status Aktif']")
+    @FindBy(xpath = "//p[text()='Import Status Aktif']")
     private WebElement btnSubMenuImportStatusAktif;
 
     @FindBy(xpath = "//button[contains(@class, 'css-5lyhfd')]")
