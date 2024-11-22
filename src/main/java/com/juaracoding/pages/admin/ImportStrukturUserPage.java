@@ -16,10 +16,10 @@ public class ImportStrukturUserPage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "//p[normalize-space()='Import']")
+    @FindBy(xpath = "//p[text()='Import']")
     private WebElement dropdownMenuImport;
 
-    @FindBy(xpath = "//p[normalize-space()='Import Struktur User']")
+    @FindBy(xpath = "//p[text()='Import Struktur User']")
     private WebElement btnSubMenuImportStrukturUser;
 
     @FindBy(xpath = "//button[contains(@class, 'css-5lyhfd')]")
