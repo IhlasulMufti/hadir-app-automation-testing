@@ -2,16 +2,12 @@ package com.juaracoding.admin;
 
 import com.juaracoding.Hooks;
 import com.juaracoding.pages.admin.KoreksiPage;
-import com.juaracoding.pages.admin.LemburPage;
-import com.juaracoding.pages.admin.SakitPage;
 import com.juaracoding.utils.Utils;
 import com.relevantcodes.extentreports.ExtentTest;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.zh_cn.假如;
-import jdk.jshell.execution.Util;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -63,7 +59,7 @@ public class KoreksiTest {
 
     @Given("Masukkan nama yang valid")
     public void masukkan_nama_yang_valid(){
-        koreksiPage.setInputSearch("testerjuara");
+        koreksiPage.setInputSearch("Indra Gunawan");
         js.executeScript("window.scrollBy(-700,0)");
     }
 
@@ -80,7 +76,36 @@ public class KoreksiTest {
 
     @Then("Verifikasi status karyawan")
     public void verifikasi_status_karyawan(){
-        koreksiPage.getTxtApproved();
+        Assert.assertEquals(koreksiPage.getTxtApproved(),"APPROVED");
+    }
+
+    @Given("Masukkan nama yang valid {string}")
+    public void masukkan_nama_yang_valid_(String nama) {
+        koreksiPage.setInputSearch(nama);
+
+    }
+
+    @And("Klik button reject")
+    public void klik_button_reject(){
+        js.executeScript("window.scrollBy(-700,0)");
+        Utils.delay(3);
+        koreksiPage.setBtnReject();
+    }
+
+    @And("Masukkan Alasan reject")
+    public void masukkan_alasan_reject(){
+        koreksiPage.setInputAlasan("Data yang dikoreksi salah");
+    }
+
+    @And("Klik button tolak")
+    public void klik_button_tolak(){
+        koreksiPage.setBtnTolak();
+        Utils.delay(2);
+    }
+
+    @Then("Verifikasi Status karyawan reject")
+    public void verifikasi_status_karyawan_reject(){
+            Assert.assertEquals(koreksiPage.getTxtReject(),"REJECT");
     }
 
 

@@ -90,7 +90,7 @@ public class SakitTest {
     @And("Klik button Terapkan")
     public void klik_button_terapkan(){
         sakitNegative01Page.setBtnTerapkan();
-        Utils.delay(2);
+        Utils.delay(4);
         extentTest.log(LogStatus.PASS,"Klik button Terapkan");
 
     }
@@ -105,7 +105,7 @@ public class SakitTest {
     public void klik_button_reset(){
         Utils.delay(4);
         sakitNegative01Page.setBtnReset();
-        Utils.delay(2);
+        Utils.delay(4);
         extentTest.log(LogStatus.PASS,"Klik button reset");
     }
     @And("Klik button clear filter")

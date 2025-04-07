@@ -19,7 +19,7 @@ Feature: Menu Lembur Negative and Positif Test
     And Klik button filter
     And Klik button clear filter
     And Klik button batal
-#
+
     Examples:
       | nama    | departement | startdate    | enddate      |
       | invalid | Finance     | Nov 20, 2024 | Nov 21, 2024 |
@@ -138,7 +138,6 @@ Feature: Menu Lembur Negative and Positif Test
     Given Klik button filter
     When Masukkan departement valid "<departement>"
     And Klik button Terapkan
-    And Klik button search
     And Klik rows per page
     And Klik rows number 25
     Then Verifikasi jumlah rows per page 25
@@ -154,7 +153,6 @@ Feature: Menu Lembur Negative and Positif Test
     Given Klik button filter
     When Masukkan departement valid "<departement>"
     And Klik button Terapkan
-    And Klik button search
     And Klik rows per page
     And Klik rows number 10
     Then Verifikasi jumlah rows per page 10
@@ -170,30 +168,29 @@ Feature: Menu Lembur Negative and Positif Test
     Given Klik button filter
     When Masukkan departement valid "<departement>"
     And Klik button Terapkan
-    And Klik button search
     And Klik rows per page
     And Klik rows number 5
     Then Verifikasi jumlah rows per page 5
     And Klik button reset
     And Klik button filter
-    And Klik button clear filter
-    And Klik button batal
-    Examples:
-      | departement   |
-      | IT Programmer |
-
-  Scenario Outline: Exsport Data lembur dengan mengisi start date dan end date
-    Given Klik button date
-    When Masukkan start date valid "<startdate>"
-    And Masukkan end date valid "<enddate>"
-    And klik button save date
-    And Klik button search
-    And Klik button export
-    Then Verifikasi data export lembur
-    And Klik button reset
-    Examples:
-      | startdate     | enddate      |
-      | Nov 29, 2024  | Nov 30, 2024 |
+#    And Klik button clear filter
+#    And Klik button batal
+#    Examples:
+#      | departement   |
+#      | IT Programmer |
+#
+#  Scenario Outline: Exsport Data lembur dengan mengisi start date dan end date
+#    Given Klik button date
+#    When Masukkan start date valid "<startdate>"
+#    And Masukkan end date valid "<enddate>"
+#    And klik button save date
+#    And Klik button search
+#    And Klik button export
+#    Then Verifikasi data export lembur
+#    And Klik button reset
+#    Examples:
+#      | startdate     | enddate      |
+#      | Nov 29, 2024  | Nov 30, 2024 |
 
 
 

@@ -110,8 +110,6 @@ public class SakitPage {
         return file.exists();
     }
 
-
-
     public String getTxtNextPage(){
 
         return txtNextPage.getText();
@@ -201,11 +199,12 @@ public class SakitPage {
     }
 
     public void setBtnReset(){
+        Utils.delay(3);
         btnReset.click();
     }
 
     public void setBtnClearFilter(){
-        btnClearFilter.click();
+        btnClearFilter.click();//
     }
 
     public void setBtnBatalFilter(){

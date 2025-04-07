@@ -3,14 +3,14 @@ Feature: Koreksi
   Scenario Outline: Menampilkan data koreksi dengan input nama dan tanggal yang sesuai
     Given Klik button menu laporan
     When Klik button menu koreksi
-#    And Masukkan nama yang sesuai "<nama>"
-#    And Klik button date
-#    And Pilih start date yang sesuai "<startdate>"
-#    And Pilih end date yang sesuai "<enddate>"
-#    And klik button save date
-#    And Klik button search
-#    Then Verifikasi terdapat data dengan nama dan tanggal yang sesuai
-#    And Klik button reset
+    And Masukkan nama yang sesuai "<nama>"
+    And Klik button date
+    And Pilih start date yang sesuai "<startdate>"
+    And Pilih end date yang sesuai "<enddate>"
+    And klik button save date
+    And Klik button search
+    Then Verifikasi terdapat data dengan nama dan tanggal yang sesuai
+    And Klik button reset
 
     Examples:
        | nama     | startdate     | enddate |
@@ -25,6 +25,9 @@ Feature: Koreksi
     Then Verifikasi status karyawan
     And Klik button reset
 
+
+
+  # negative test
   Scenario Outline: Reject koreksi absen yang diajukan
     Given Masukkan nama yang valid "<nama>"
     When  Klik button date
@@ -35,8 +38,9 @@ Feature: Koreksi
     And Klik button reject
     And Masukkan Alasan reject
     And Klik button tolak
-    Then Verifikasi Status karyawan
+    Then Verifikasi Status karyawan reject
+    And Klik button reset 
 
     Examples:
-      | nama        | startdate     | enddate      |
-      | Test User 1 | Nov 08, 2024  | Nov 08, 2024 |
+      | nama                 | startdate     | enddate      |
+      | Hadir SQA Testing 1  | Feb 14, 2025  | Feb 17, 2025 |

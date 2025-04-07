@@ -57,7 +57,7 @@ public class LemburPage {
     private WebElement btnSearch;
 
     @FindBy(xpath = "//button[normalize-space()='Reset']")
-    private WebElement btnReset;
+    public WebElement btnReset;
 
     @FindBy(xpath = "/html/body/div[3]/div[3]/div/form/div[1]/div/div/div/div/div/div")
     private WebElement btnClearFilter;
@@ -157,6 +157,7 @@ public class LemburPage {
 
     public String getTxtJmlDataRow(){
         return txtJmlDataRow.getText();
+
     }
 
     public void setBtnExport(){

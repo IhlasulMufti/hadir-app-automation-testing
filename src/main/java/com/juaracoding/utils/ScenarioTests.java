@@ -28,7 +28,10 @@ public enum ScenarioTests {
     T24("Menampilkan data lebih banyak dengan rows per page 25"),
     T25("Menampilkan data lebih banyak dengan rows per page 10"),
     T26("Menampilkan data lebih banyak dengan rows per page 5"),
-    T27("Exsport Data lembur dengan mengisi start date dan end date");
+    T27("Exsport Data lembur dengan mengisi start date dan end date"),
+    T28("Menampilkan data koreksi dengan input nama dan tanggal yang sesuai"),
+    T29("Menampilkan data koreksi dengan input nama dan tanggal yang sesuai"),
+    T30("Approval koreksi absen yang diajukan");
 
 
 
