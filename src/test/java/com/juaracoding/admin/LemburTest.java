@@ -10,7 +10,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import jdk.jshell.execution.Util;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -195,6 +194,7 @@ public class LemburTest {
 
     @And("Klik rows per page")
     public void klik_rows_per_page(){
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
         lemburPage.setBtnRowsPerPage();
         Utils.delay(2);
         extentTest.log(LogStatus.PASS,"Klik rows per page");
@@ -208,23 +208,24 @@ public class LemburTest {
 
     @Then("Verifikasi jumlah rows per page 25")
     public void verifikasi_jumlah_rows_per_page_25(){
-        js.executeScript("window.scrollBy(0,700)");
-        Assert.assertEquals(lemburPage.getTxtRows(),"1-25 of 61");
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+        Assert.assertEquals(lemburPage.getTxtRows(),"1-25 of 53");
         extentTest.log(LogStatus.PASS,"Verifikasi jumlah rows per page 25");
 
     }
     @And("Klik rows number 10")
     public void klik_rows_number_10(){
+        js.executeScript("window.scrollBy(0,700)");
+        Utils.delay(2);
         lemburPage.setBtnRowsPerPage10();
         Utils.delay(2);
         extentTest.log(LogStatus.PASS,"Klik rows number 10");
     }
     @Then("Verifikasi jumlah rows per page 10")
     public void verifikasi_jumlah_rows_per_page_10(){
-        js.executeScript("window.scrollBy(0,700)");
-        Assert.assertEquals(lemburPage.getTxtRows(),"1-10 of 61");
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+        Assert.assertEquals(lemburPage.getTxtRows(),"1-10 of 53");
         extentTest.log(LogStatus.PASS,"Verifikasi jumlah rows per page 10");
-
     }
 
     @And("Klik rows number 5")
@@ -235,8 +236,8 @@ public class LemburTest {
     }
     @Then("Verifikasi jumlah rows per page 5")
     public void verifikasi_jumlah_rows_per_page_5(){
-        js.executeScript("window.scrollBy(0,700)");
-        Assert.assertEquals(lemburPage.getTxtRows(),"1-5 of 61");
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+        Assert.assertEquals(lemburPage.getTxtRows(),"1-5 of 53");
         extentTest.log(LogStatus.PASS,"Verifikasi jumlah rows per page 5");
     }
 

@@ -141,56 +141,39 @@ Feature: Menu Lembur Negative and Positif Test
     And Klik rows per page
     And Klik rows number 25
     Then Verifikasi jumlah rows per page 25
-    And Klik button reset
-    And Klik button filter
-    And Klik button clear filter
-    And Klik button batal
     Examples:
       | departement   |
       | IT Programmer |
 
-  Scenario Outline: Menampilkan data lebih banyak dengan rows per page 10
-    Given Klik button filter
-    When Masukkan departement valid "<departement>"
-    And Klik button Terapkan
-    And Klik rows per page
-    And Klik rows number 10
+
+  Scenario: Menampilkan data lebih banyak dengan rows per page 5
+    Given Klik rows per page
+    When Klik rows number 5
+    Then Verifikasi jumlah rows per page 5
+
+
+
+  Scenario: Menampilkan data lebih banyak dengan rows per page 10
+    Given Klik rows per page
+    When Klik rows number 10
     Then Verifikasi jumlah rows per page 10
     And Klik button reset
     And Klik button filter
     And Klik button clear filter
     And Klik button batal
-    Examples:
-      | departement   |
-      | IT Programmer |
 
-  Scenario Outline: Menampilkan data lebih banyak dengan rows per page 5
-    Given Klik button filter
-    When Masukkan departement valid "<departement>"
-    And Klik button Terapkan
-    And Klik rows per page
-    And Klik rows number 5
-    Then Verifikasi jumlah rows per page 5
+  Scenario Outline: Exsport Data lembur dengan mengisi start date dan end date
+    Given Klik button date
+    When Masukkan start date valid "<startdate>"
+    And Masukkan end date valid "<enddate>"
+    And klik button save date
+    And Klik button search
+    And Klik button export
+    Then Verifikasi data export lembur
     And Klik button reset
-    And Klik button filter
-#    And Klik button clear filter
-#    And Klik button batal
-#    Examples:
-#      | departement   |
-#      | IT Programmer |
-#
-#  Scenario Outline: Exsport Data lembur dengan mengisi start date dan end date
-#    Given Klik button date
-#    When Masukkan start date valid "<startdate>"
-#    And Masukkan end date valid "<enddate>"
-#    And klik button save date
-#    And Klik button search
-#    And Klik button export
-#    Then Verifikasi data export lembur
-#    And Klik button reset
-#    Examples:
-#      | startdate     | enddate      |
-#      | Nov 29, 2024  | Nov 30, 2024 |
+    Examples:
+      | startdate     | enddate      |
+      | Nov 29, 2024  | Nov 30, 2024 |
 
 
 

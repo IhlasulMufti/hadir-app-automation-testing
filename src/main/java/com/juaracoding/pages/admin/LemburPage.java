@@ -101,16 +101,16 @@ public class LemburPage {
     @FindBy(xpath = "//button[contains(@class, 'MuiButton-containedSizeMedium css-4075ia')]")
     private WebElement btnUbahData;
 
-    @FindBy(xpath = "//div[@id='mui-3']")
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/div[2]/div/div[1]/div/div[2]/div/div[3]/div/div/div[2]")
     private WebElement btnRowsPerPage;
 
-    @FindBy(xpath = "//li[contains(@class, 'MuiTablePagination-menuItem css-74h9kj')]")
+    @FindBy(xpath = "//li[@data-value= '5']")
     private WebElement btnRowsPerPage5;
 
-    @FindBy(xpath = "//*[@id=\"mui-2\"]/li[2]")
+    @FindBy(xpath = "//li[@data-value= '10']")
     private WebElement btnRowsPerPage10;
 
-    @FindBy(xpath = "//*[@id=\"mui-2\"]/li[3]")
+    @FindBy(xpath = "//li[@data-value= '25']")
     private WebElement btnRowsPerPage25;
 
     @FindBy(xpath = "//p[@class= 'MuiTablePagination-displayedRows css-kim0d']")
